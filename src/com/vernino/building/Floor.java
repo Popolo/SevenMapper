@@ -31,9 +31,9 @@ public class Floor {
 		return true;
 	}
 	
-	protected Room findRoomAt(Location l){
-		for(int i = 0; i<rooms.size(); i++){
-			if(rooms.get(i).getLocation().equals(l)){
+	public Room findRoomAt(Location l){
+		for(int i = 0; i < rooms.size(); i++){
+			if(rooms.get(i).isReal() && rooms.get(i).getLocation().equals(l)){
 				return rooms.get(i);
 			}
 		}
@@ -48,7 +48,7 @@ public class Floor {
 	}
 	
 	//Creates a room at location "l" that has doors that match with neighbors.
-	private void addGoodRoom(Location l){
+	public void addGoodRoom(Location l){
 		//Breaks if there is a room at that location already.
 		if(findRoomAt(l) != null){
 			return;

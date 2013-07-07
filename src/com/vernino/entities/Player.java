@@ -1,12 +1,11 @@
 package com.vernino.entities;
 
-import java.util.ArrayList;
-
+import com.vernino.building.*;
 import com.vernino.misc.Location;
 import com.vernino.misc.Physical;
 
 public class Player extends Physical{
-	ArrayList<Location> visited = new ArrayList<Location>();
+	Room current;
 
 	public Player(Location l) {
 		super(l);
@@ -20,9 +19,19 @@ public class Player extends Physical{
 		return false;
 	}
 	
-	public boolean move(int dir){
-		loc.move(dir);
-		return true;
+	public boolean move(int dir, Floor floor){
+		Room temp = current;
+		if(current.getDoors()[dir]){
+			loc.move(dir);
+			setCurrentRoom(floor.findRoomAt(loc));
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void setCurrentRoom(Room R){
+		current = R;
 	}
 
 }

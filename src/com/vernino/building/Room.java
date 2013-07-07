@@ -8,7 +8,7 @@ import com.vernino.misc.Physical;
 
 public class Room extends Physical {
 	boolean[] doors;
-	ArrayList <Entity> entities;
+	ArrayList <Entity> entities = new ArrayList<Entity>();
 	
 	public final static boolean[] OPEN = {true,true,true,true};
 
@@ -17,7 +17,7 @@ public class Room extends Physical {
 	}
 	
 	public Room(Location l){
-		super(null);
+		super(l);
 		this.doors = OPEN;
 	}
 	
@@ -34,12 +34,43 @@ public class Room extends Physical {
 		return (this.getLocation() != null);
 	}
 	
-	public String thingsHere(){
-		String s = "Stuff Here:\n";
-		for(int i = 0; i<entities.size();i++){
-			s += "  *" + entities.get(i) + "\n";
+	
+	
+	//STRING METHODS ONLY BELOW
+	
+	public String toString(){
+		return doorsHere() + thingsHere();
+	}
+	
+	private String thingsHere(){
+		String s;
+		
+		if(entities.size() > 0){
+			s = "\nStuff Here:\n";
+			for(int i = 0; i<entities.size();i++){
+				s += "  *" + entities.get(i) + "\n";
+			}
+		}else{
+			s = "\nYou don't see anything else.";
 		}
 		return s;
 	}
-
+	
+	private String doorsHere(){
+		String s = "Exits are";
+		if(doors[0]){
+			s += " north";
+		}
+		if(doors[1]){
+			s += " east";
+		}
+		if(doors[2]){
+			s += " south";
+		}
+		if(doors[3]){
+			s += " west";
+		}
+		
+		return s + ".";
+	}
 }

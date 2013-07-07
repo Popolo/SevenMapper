@@ -12,6 +12,7 @@ public class GameSession {
 	GameSession(){
 		player = new Player(new Location(0,0));
 		building = new Floor(new Room(new Location(0,0)));
+		player.setCurrentRoom(building.findRoomAt(new Location(0,0)));
 	}
 	
 	void command(String s){
@@ -19,7 +20,13 @@ public class GameSession {
 	}
 	
 	String look(){
-		return player.getLocation().toString();
+		Room at = building.findRoomAt(player.getLocation());
+		if(at == null){
+			building.addGoodRoom(player.getLocation());
+			at = building.findRoomAt(player.getLocation());
+			player.setCurrentRoom(at);
+		}
+		return at.getLocation() + at.toString();
 	}
 	
 	void alert(String s){
@@ -28,5 +35,9 @@ public class GameSession {
 	
 	void print(String s){
 		Main.frame.print(s);
+	}
+	
+	public Floor getFloor(){
+		return building;
 	}
 }
