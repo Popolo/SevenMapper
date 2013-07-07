@@ -1,10 +1,6 @@
 package com.vernino.control;
-import java.util.ArrayList;
-
 import com.vernino.building.Floor;
 import com.vernino.building.Room;
-import com.vernino.building.RoomType;
-import com.vernino.entities.Entity;
 import com.vernino.entities.Player;
 import com.vernino.misc.Location;
 
@@ -15,7 +11,7 @@ public class GameSession {
 	
 	GameSession(){
 		player = new Player(new Location(0,0));
-		building = new Floor(new Room(RoomType.CROSS, 0, new Location(0,0)));
+		building = new Floor(new Room(new Location(0,0)));
 	}
 	
 	void command(String s){

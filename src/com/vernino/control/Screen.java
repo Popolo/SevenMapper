@@ -51,7 +51,7 @@ public class Screen extends JFrame {
 	
 	//Creates the output box.
 	protected JTextArea createOutBox(){
-		JTextArea outBox = new JTextArea("Starting...");
+		JTextArea outBox = new JTextArea(welcome());
 		outBox.setPreferredSize(new Dimension(1200,600));
 		outBox.setBackground(Color.BLACK);
 		outBox.setForeground(Color.GREEN);

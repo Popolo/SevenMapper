@@ -1,9 +1,12 @@
 package com.vernino.entities;
 
+import java.util.ArrayList;
+
 import com.vernino.misc.Location;
 import com.vernino.misc.Physical;
 
 public class Player extends Physical{
+	ArrayList<Location> visited = new ArrayList<Location>();
 
 	public Player(Location l) {
 		super(l);
