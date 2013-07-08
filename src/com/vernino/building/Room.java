@@ -11,6 +11,7 @@ public class Room extends Physical {
 	ArrayList <Entity> entities = new ArrayList<Entity>();
 	
 	public final static boolean[] OPEN = {true,true,true,true};
+	public final static boolean[] HALL = {true,false,true,false};
 
 	public Room() {
 		super(null);
@@ -21,7 +22,7 @@ public class Room extends Physical {
 		this.doors = OPEN;
 	}
 	
-	public Room(boolean[] doors, Location l){
+	public Room(Location l, boolean[] doors){
 		super(l);
 		this.doors = doors;
 	}

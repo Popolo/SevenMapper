@@ -23,6 +23,7 @@ public class Player extends Physical{
 		Room temp = current;
 		if(current.getDoors()[dir]){
 			loc.move(dir);
+			temp = floor.findRoomAt(loc);
 			setCurrentRoom(floor.findRoomAt(loc));
 			return true;
 		}

@@ -33,7 +33,7 @@ public class Floor {
 	
 	public Room findRoomAt(Location l){
 		for(int i = 0; i < rooms.size(); i++){
-			if(rooms.get(i).isReal() && rooms.get(i).getLocation().equals(l)){
+			if(rooms.get(i) != null && rooms.get(i).getLocation().equals(l)){
 				return rooms.get(i);
 			}
 		}
